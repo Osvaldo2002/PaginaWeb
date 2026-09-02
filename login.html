@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dino Rancho - Iniciar Sesión</title>
     
-    <!-- CSS Propio y Bootstrap (Mismas rutas que tu index.html) -->
     <link rel="stylesheet" href="style/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <!-- NAVBARS (Copiados idénticos a tu index.html) -->
     <nav class="navbar body-bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">Dino Rancho</a>
@@ -51,7 +49,6 @@
         </div>
     </nav>
 
-    <!-- FORMULARIO DE INICIO DE SESIÓN -->
     <main class="container my-5">
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-5">
@@ -63,7 +60,6 @@
                     <div class="card-body p-4">
                         <form id="loginForm" novalidate>
                             
-                            <!-- Campo Correo -->
                             <div class="mb-3">
                                 <label for="correo" class="form-label fw-semibold">Correo Electrónico *</label>
                                 <input 
@@ -80,7 +76,6 @@
                                 </div>
                             </div>
 
-                            <!-- Campo Contraseña -->
                             <div class="mb-3">
                                 <label for="password" class="form-label fw-semibold">Contraseña *</label>
                                 <input 
@@ -97,10 +92,8 @@
                                 </div>
                             </div>
 
-                            <!-- Alerta de estado -->
                             <div id="formStatus" class="alert d-none mt-3" role="alert"></div>
 
-                            <!-- Botón ingresar -->
                             <div class="d-grid gap-2 mt-4">
                                 <button class="btn btn-success btn-lg fs-6 fw-bold" type="submit">
                                     Ingresar
@@ -114,7 +107,6 @@
         </div>
     </main>
 
-    <!-- SCRIPT DE VALIDACIONES JS -->
     <script src="login.js"></script>
 </body>
 </html>
