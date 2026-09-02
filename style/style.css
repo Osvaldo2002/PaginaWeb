@@ -1,0 +1,52 @@
+.wrapper {
+    display: grid;
+    /* 2 columnas: la izquierda se adapta al contenido, la derecha toma el resto */
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px;
+    background-color: #e5e5e5; /* Fondo gris como la referencia */
+    padding: 40px;
+    align-items: center; /* Alinea verticalmente al centro */
+}
+
+.texto {
+    /* No necesitas especificar grid-column, por defecto va en la columna 1 */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.imagen {
+    /* Tampoco requiere posicionamiento explícito, pasa a la columna 2 */
+    width: 100%;
+}
+
+.imagen img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Estilo rápido del botón */
+.btn-banner {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #000;
+    background-color: #fff;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+}
+.card_container{
+    padding-top: 30px;
+}
+
+.container_contacto{
+    background-color: grey;
+    margin-top: 40px;
+}
+
+.navbar-color{
+    background-color: #6DC75F;
+}
