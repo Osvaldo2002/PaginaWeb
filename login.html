@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dino Rancho - Iniciar Sesión</title>
+    
+    <!-- CSS Propio y Bootstrap (Mismas rutas que tu index.html) -->
+    <link rel="stylesheet" href="style/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- NAVBARS (Copiados idénticos a tu index.html) -->
+    <nav class="navbar body-bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Dino Rancho</a>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-green">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse container" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="productos.html">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contactso</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="login.html">Iniciar Sesión</a>
+                    </li>
+                </ul>  
+            </div>
+
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- FORMULARIO DE INICIO DE SESIÓN -->
+    <main class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-success text-white text-center py-3">
+                        <h3 class="mb-0 fs-4">Iniciar Sesión</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <form id="loginForm" novalidate>
+                            
+                            <!-- Campo Correo -->
+                            <div class="mb-3">
+                                <label for="correo" class="form-label fw-semibold">Correo Electrónico *</label>
+                                <input 
+                                    type="email" 
+                                    class="form-control" 
+                                    id="correo" 
+                                    placeholder="ejemplo@duoc.cl" 
+                                    maxlength="100"
+                                    autocomplete="email"
+                                    required
+                                >
+                                <div class="invalid-feedback" id="errorCorreo">
+                                    Ingrese un correo válido (@duoc.cl, @profesor.duoc.cl o @gmail.com).
+                                </div>
+                            </div>
+
+                            <!-- Campo Contraseña -->
+                            <div class="mb-3">
+                                <label for="password" class="form-label fw-semibold">Contraseña *</label>
+                                <input 
+                                    type="password" 
+                                    class="form-control" 
+                                    id="password" 
+                                    placeholder="••••••••" 
+                                    maxlength="10"
+                                    autocomplete="current-password"
+                                    required
+                                >
+                                <div class="invalid-feedback" id="errorPassword">
+                                    La contraseña debe tener entre 4 y 10 caracteres.
+                                </div>
+                            </div>
+
+                            <!-- Alerta de estado -->
+                            <div id="formStatus" class="alert d-none mt-3" role="alert"></div>
+
+                            <!-- Botón ingresar -->
+                            <div class="d-grid gap-2 mt-4">
+                                <button class="btn btn-success btn-lg fs-6 fw-bold" type="submit">
+                                    Ingresar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- SCRIPT DE VALIDACIONES JS -->
+    <script src="login.js"></script>
+</body>
+</html>
