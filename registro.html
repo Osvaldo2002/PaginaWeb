@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dino Rancho - Registro de Usuario</title>
+
+    <link rel="stylesheet" href="style/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <nav class="navbar body-bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Dino Rancho</a>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-expand-lg navbar-color navbar-dark">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nosotros.html">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="productos.html">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blogs.html">Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contacto">Contacto</a>
+                    </li>
+                </ul>  
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-success text-white text-center py-3">
+                        <h3 class="mb-0 fs-4">Crear Cuenta en Dino Rancho</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <form id="registroForm" novalidate>
+                            
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label fw-semibold">Nombre Completo *</label>
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="nombre" 
+                                    placeholder="Ej: Juan Pérez" 
+                                    maxlength="50"
+                                    required
+                                >
+                                <div class="invalid-feedback" id="errorNombre">
+                                    El nombre es obligatorio (máximo 50 caracteres).
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="correo" class="form-label fw-semibold">Correo Electrónico *</label>
+                                <input 
+                                    type="email" 
+                                    class="form-control" 
+                                    id="correo" 
+                                    placeholder="ejemplo@duoc.cl" 
+                                    maxlength="100"
+                                    required
+                                >
+                                <div class="invalid-feedback" id="errorCorreo">
+                                    Debe usar un dominio válido (@duoc.cl, @profesor.duoc.cl o @gmail.com).
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="fechaNacimiento" class="form-label fw-semibold">Fecha de Nacimiento *</label>
+                                <input 
+                                    type="date" 
+                                    class="form-control" 
+                                    id="fechaNacimiento" 
+                                    required
+                                >
+                                <div class="invalid-feedback" id="errorFecha">
+                                    Debes ser mayor de 18 años para registrarte en el rancho.
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="password" class="form-label fw-semibold">Contraseña *</label>
+                                    <input 
+                                        type="password" 
+                                        class="form-control" 
+                                        id="password" 
+                                        placeholder="••••••••" 
+                                        maxlength="10"
+                                        required
+                                    >
+                                    <div class="invalid-feedback" id="errorPassword">
+                                        Debe tener entre 4 y 10 caracteres.
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="confirmPassword" class="form-label fw-semibold">Confirmar Contraseña *</label>
+                                    <input 
+                                        type="password" 
+                                        class="form-control" 
+                                        id="confirmPassword" 
+                                        placeholder="••••••••" 
+                                        maxlength="10"
+                                        required
+                                    >
+                                    <div class="invalid-feedback" id="errorConfirmPassword">
+                                        Las contraseñas no coinciden.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="terminos" required>
+                                <label class="form-check-label" for="terminos">
+                                    Acepto los términos y condiciones del rancho *
+                                </label>
+                                <div class="invalid-feedback" id="errorTerminos">
+                                    Debes aceptar los términos para registrarte.
+                                </div>
+                            </div>
+
+                            <div id="formStatus" class="alert d-none mt-3" role="alert"></div>
+
+                            <div class="d-grid gap-2 mt-4">
+                                <button class="btn btn-success btn-lg fs-6 fw-bold" type="submit">
+                                    Registrarme
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="text-center mt-3">
+                    <p>¿Ya tienes una cuenta? <a href="login.html" class="text-success fw-bold">Inicia sesión aquí</a></p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="js/registro.js"></script>
+</body>
+</html>
