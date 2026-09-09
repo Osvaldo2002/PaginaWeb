@@ -3,7 +3,7 @@
     /* 2 columnas: la izquierda se adapta al contenido, la derecha toma el resto */
     grid-template-columns: 1fr 1fr; 
     gap: 20px;
-    background-color: #e5e5e5; /* Fondo gris como la referencia */
+    background-color: grey; /* Fondo gris como la referencia */
     padding: 40px;
     align-items: center; /* Alinea verticalmente al centro */
 }
@@ -49,4 +49,9 @@
 
 .navbar-color{
     background-color: #6DC75F;
+}
+.text-center{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
 }
