@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dino Rancho - Nuevo Producto</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</head>
+<body class="bg-light">
+
+    <nav class="navbar body-bg-primary">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <a class="navbar-brand fw-bold" href="admin-index.html">Dino Rancho <span class="badge bg-dark fs-6 ms-2">ADMIN</span></a>
+            <a href="index.html" class="btn btn-outline-dark btn-sm fw-bold">Volver a la Tienda</a>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-expand-lg navbar-color navbar-dark">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNavAdmin">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin-index.html">Dashboard Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="admin-productos.html">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin-usuarios.html">Usuarios</a>
+                    </li>
+                </ul>  
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-7">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-success text-white text-center py-3">
+                        <h3 class="mb-0 fs-4">Agregar Nuevo Producto</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <form id="form-nuevo-producto">
+                            <div class="mb-3">
+                                <label for="nombreProducto" class="form-label fw-semibold">Nombre del Producto *</label>
+                                <input type="text" class="form-control" id="nombreProducto" placeholder="Ej: Velociraptor Adiestrado" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="precioProducto" class="form-label fw-semibold">Precio ($ CLP) *</label>
+                                <input type="number" class="form-control" id="precioProducto" placeholder="Ej: 350000" min="0" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="descripcionProducto" class="form-label fw-semibold">Descripción *</label>
+                                <textarea class="form-control" id="descripcionProducto" rows="4" placeholder="Escribe los detalles y características del espécimen o producto..." required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="imagenProducto" class="form-label fw-semibold">Imagen del Producto</label>
+                                <input type="file" class="form-control" id="imagenProducto" accept="image/*">
+                                <div class="mt-2 d-none align-items-center gap-2" id="contenedor-preview">
+                                    <span class="form-text">Vista previa:</span>
+                                    <img id="preview-imagen" src="" alt="Vista previa" style="width: 60px; height: 60px; object-fit: cover;" class="rounded border">
+                                </div>
+                            </div>
+
+                            <div class="d-flex gap-2 mt-4">
+                                <button type="submit" class="btn btn-success flex-fill fs-6 fw-bold">Guardar Producto</button>
+                                <a href="admin-productos.html" class="btn btn-outline-secondary flex-fill fs-6 fw-bold text-center d-flex align-items-center justify-content-center">Cancelar</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/admin-producto-nuevo.js"></script>
+</body>
+</html>

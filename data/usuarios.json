@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "nombre": "Juan Pérez",
+    "correo": "juan.perez@duocuc.cl",
+    "password": "password123",
+    "rol": "Cliente"
+  },
+  {
+    "id": 2,
+    "nombre": "Carlos Rivas",
+    "correo": "carl.rivas@duocuc.cl",
+    "password": "admin123",
+    "rol": "Administrador"
+  }
+]

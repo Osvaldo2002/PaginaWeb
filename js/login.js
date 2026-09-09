@@ -1,85 +1,79 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.getElementById('loginForm');
-    const correoInput = document.getElementById('correo');
-    const passwordInput = document.getElementById('password');
+document.addEventListener("DOMContentLoaded", () => {
+    const loginForm = document.getElementById("loginForm");
+    const correoInput = document.getElementById("correo");
+    const passwordInput = document.getElementById("password");
+    const formStatus = document.getElementById("formStatus");
 
-    const errorCorreo = document.getElementById('errorCorreo');
-    const errorPassword = document.getElementById('errorPassword');
-    const formStatus = document.getElementById('formStatus');
-
-    const dominiosPermitidos = ['@duocuc.cl', '@profesor.duocuc.cl', '@gmail.com'];
-
-    function validarCorreo() {
-        const val = correoInput.value.trim();
-
-        if (!val) {
-            setError(correoInput, errorCorreo, 'El correo electrónico es obligatorio.');
-            return false;
+    const usuariosPorDefecto = [
+        {
+            id: 1,
+            nombre: "Juan Pérez",
+            correo: "juan.perez@duocuc.cl",
+            password: "password123",
+            rol: "Cliente"
+        },
+        {
+            id: 2,
+            nombre: "Carlos Rivas",
+            correo: "carl.rivas@duocuc.cl",
+            password: "admin123",
+            rol: "Administrador"
         }
+    ];
 
-        if (val.length > 100) {
-            setError(correoInput, errorCorreo, 'El correo no debe superar los 100 caracteres.');
-            return false;
-        }
-
-        const esValido = dominiosPermitidos.some(dominio => val.toLowerCase().endsWith(dominio));
-
-        if (!esValido) {
-            setError(correoInput, errorCorreo, 'El correo debe terminar en @duocuc.cl, @profesor.duocuc.cl o @gmail.com');
-            return false;
-        }
-
-        setSuccess(correoInput);
-        return true;
+    if (!localStorage.getItem("usuarios")) {
+        localStorage.setItem("usuarios", JSON.stringify(usuariosPorDefecto));
     }
 
-    function validarPassword() {
-        const val = passwordInput.value.trim();
-
-        if (!val) {
-            setError(passwordInput, errorPassword, 'La contraseña es obligatoria.');
-            return false;
-        }
-
-        if (val.length < 4 || val.length > 10) {
-            setError(passwordInput, errorPassword, 'La contraseña debe tener entre 4 y 10 caracteres.');
-            return false;
-        }
-
-        setSuccess(passwordInput);
-        return true;
-    }
-
-    function setError(input, errorElement, mensaje) {
-        input.classList.remove('is-valid');
-        input.classList.add('is-invalid');
-        errorElement.textContent = mensaje;
-    }
-
-    function setSuccess(input) {
-        input.classList.remove('is-invalid');
-        input.classList.add('is-valid');
-    }
-
-    correoInput.addEventListener('input', validarCorreo);
-    passwordInput.addEventListener('input', validarPassword);
-
-    loginForm.addEventListener('submit', (e) => {
+    loginForm.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        const correoOk = validarCorreo();
-        const passwordOk = validarPassword();
+        const correo = correoInput.value.trim();
+        const password = passwordInput.value.trim();
 
-        if (correoOk && passwordOk) {
-            formStatus.className = 'alert alert-success mt-3 d-block';
-            formStatus.textContent = 'Iniciando sesión';
-            
-            setTimeout(() => {
-                window.location.href = 'index.html';
-            }, 1200);
+        let esValido = true;
+        const tieneDominioValido = correo.endsWith("@duocuc.cl");
+
+        if (!correo || !tieneDominioValido) {
+            correoInput.classList.add("is-invalid");
+            esValido = false;
         } else {
-            formStatus.className = 'alert alert-danger mt-3 d-block';
-            formStatus.textContent = 'Corrige los campos con error.';
+            correoInput.classList.remove("is-invalid");
+            correoInput.classList.add("is-valid");
+        }
+
+        if (!password || password.length < 4 || password.length > 10) {
+            passwordInput.classList.add("is-invalid");
+            esValido = false;
+        } else {
+            passwordInput.classList.remove("is-invalid");
+            passwordInput.classList.add("is-valid");
+        }
+
+        if (!esValido) return;
+
+        const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+        const usuarioEncontrado = usuarios.find(
+            u => u.correo.toLowerCase() === correo.toLowerCase() && u.password === password
+        );
+
+        if (usuarioEncontrado) {
+            localStorage.setItem("usuarioLogueado", JSON.stringify(usuarioEncontrado));
+
+            formStatus.className = "alert alert-success mt-3";
+            formStatus.textContent = `¡Bienvenido/a, ${usuarioEncontrado.nombre}! Redirigiendo...`;
+
+            setTimeout(() => {
+                if (usuarioEncontrado.rol === "Administrador") {
+                    window.location.href = "admin-index.html";
+                } else {
+                    window.location.href = "index.html";
+                }
+            }, 1500);
+
+        } else {
+            formStatus.className = "alert alert-danger mt-3";
+            formStatus.textContent = "Correo o contraseña incorrectos. Verifica tus datos.";
         }
     });
 });

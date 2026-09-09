@@ -16,8 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorTerminos = document.getElementById('errorTerminos');
     const formStatus = document.getElementById('formStatus');
 
-    const dominiosPermitidos = ['@duoc.cl', '@profesor.duoc.cl', '@gmail.com'];
-
     function validarNombre() {
         const val = nombreInput.value.trim();
         if (!val) {
@@ -42,9 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
             setError(correoInput, errorCorreo, 'El correo no debe superar los 100 caracteres.');
             return false;
         }
-        const esValido = dominiosPermitidos.some(dominio => val.toLowerCase().endsWith(dominio));
-        if (!esValido) {
-            setError(correoInput, errorCorreo, 'Debe terminar en @duoc.cl, @profesor.duoc.cl o @gmail.com');
+        if (!val.toLowerCase().endsWith('@duocuc.cl')) {
+            setError(correoInput, errorCorreo, 'Debe terminar en @duocuc.cl');
             return false;
         }
         setSuccess(correoInput);
@@ -151,6 +148,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const terminosOk = validarTerminos();
 
         if (nombreOk && correoOk && fechaOk && passOk && confirmPassOk && terminosOk) {
+            const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+            const nuevoUsuario = {
+                id: usuarios.length + 1,
+                nombre: nombreInput.value.trim(),
+                correo: correoInput.value.trim(),
+                password: passwordInput.value.trim(),
+                rol: 'Cliente'
+            };
+            usuarios.push(nuevoUsuario);
+            localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
             formStatus.className = 'alert alert-success mt-3 d-block';
             formStatus.textContent = 'Registrado exitosamente, redirigiendo al inicio de sesión.';
 
